@@ -14,6 +14,20 @@ const questions = (command, data) => {
         },
       ];
       break;
+    case "GO":
+      xyz = [
+        {
+          type: "autocomplete",
+          name: "value",
+          suggest: (input, choices) =>
+            choices.filter((i) =>
+              i.title.toLowerCase().includes(input.toLowerCase())
+            ),
+          message: "Select project to open :",
+          choices: data,
+        },
+      ];
+      break;
     default:
       break;
   }

@@ -9,12 +9,19 @@ class operations {
   find(tblName) {
     const storage = this.storage[tblName];
     return (key) => {
-      if (!key) {
+      if (!Object.keys(key).length) {
         return storage;
       }
       return storage.hasOwnProperty(key) ? storage[key] : undefined;
     };
   }
+  findById(tblName) {
+    const storage = this.storage[tblName];
+    return (key) => {
+      return storage.hasOwnProperty(key) ? storage[key] : undefined;
+    };
+  }
+
   save(tblName) {
     const storage = this.storage[tblName];
     const uuid = generateUUID();
@@ -40,6 +47,7 @@ class JSONdb extends operations {
   model(tblName) {
     return {
       find: this.find(tblName),
+      findById: this.findById(tblName),
       save: this.save(tblName),
     };
   }

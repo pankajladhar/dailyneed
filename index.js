@@ -10,4 +10,9 @@ program
   .description("option to add project in list")
   .action(actions.add);
 
+program
+  .command("go")
+  .description("option to go to project in list")
+  .action(actions.go);
+
 program.parse(process.argv);

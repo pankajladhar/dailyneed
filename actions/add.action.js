@@ -1,5 +1,5 @@
 const COMMANDS = require("../constants/commands");
-const { generateUUID, getPathForCurrentDir } = require("./../helpers/helpers");
+const { getPathForCurrentDir } = require("./../helpers/helpers");
 const handleRequest = require("../handlers/handlers");
 const JSONdb = require("../JSONdb/JSONdb");
 

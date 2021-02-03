@@ -10,8 +10,9 @@ const generateUUID = () => {
 };
 
 const getProjectNames = (input) => {
-  return Object.values(input).map(({ name }) => ({
+  return Object.values(input).map(({ name, _id }) => ({
     title: name,
+    value: _id
   }));
 };
 
