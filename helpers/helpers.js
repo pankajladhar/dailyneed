@@ -12,7 +12,7 @@ const generateUUID = () => {
 const getProjectNames = (input) => {
   return Object.values(input)
     .sort((a, b) => b.lastModifiedAt - a.lastModifiedAt)
-    .map(({ name, _id, lastModifiedAt }) => ({
+    .map(({ name, _id }) => ({
       title: name,
       value: _id,
     }));
