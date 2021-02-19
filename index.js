@@ -12,5 +12,6 @@ const {
 
 program.command("add").description(ADD_COMMAND_DESCRIPTION).action(actions.add);
 program.command("go").description(GO_COMMAND_DESCRIPTION).action(actions.go);
+program.command("open").description(GO_COMMAND_DESCRIPTION).action(actions.open);
 
 program.parse(process.argv);
