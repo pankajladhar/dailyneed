@@ -15,7 +15,9 @@ const go = async (filePath) => {
       getProjectNames(Projects.find({}))
     );
 
-    const projectPath = Projects.findById(value).path;
+    const { _id, path: projectPath } = Projects.findById(value);
+    Projects.update(_id, { lastModifiedAt: new Date().getTime() });
+
     spawn(process.env.SHELL, {
       cwd: projectPath,
       // This makes this process "take over" the terminal

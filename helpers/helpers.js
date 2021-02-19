@@ -10,10 +10,12 @@ const generateUUID = () => {
 };
 
 const getProjectNames = (input) => {
-  return Object.values(input).map(({ name, _id }) => ({
-    title: name,
-    value: _id
-  }));
+  return Object.values(input)
+    .sort((a, b) => b.lastModifiedAt - a.lastModifiedAt)
+    .map(({ name, _id, lastModifiedAt }) => ({
+      title: name,
+      value: _id,
+    }));
 };
 
 module.exports = {

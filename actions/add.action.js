@@ -11,7 +11,7 @@ const add = async (filePath) => {
     const input = {
       name,
       path: getPathForCurrentDir(),
-      lastModified: new Date().getTime()
+      lastModifiedAt: new Date().getTime()
     };
     const Projects = db.model("projects");
     Projects.save(input);
