@@ -16,6 +16,7 @@ const questions = (command, data) => {
       break;
     case "GO":
     case "OPEN":
+    case "REMOVE":
       xyz = [
         {
           type: "autocomplete",

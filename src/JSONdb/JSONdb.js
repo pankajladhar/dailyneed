@@ -6,54 +6,94 @@ class operations {
     this.filePath = filePath;
     this.storage = JSON.parse(fs.readFileSync(filePath));
   }
-  find(tblName) {
-    const storage = this.storage[tblName];
-    return (key) => {
-      if (!Object.keys(key).length) {
-        return storage;
-      }
-      return storage.hasOwnProperty(key) ? storage[key] : undefined;
+
+  getAll(tblName) {
+    return () => {
+      return this.storage[tblName];
     };
   }
-  findById(tblName) {
+
+  getById(tblName) {
     const storage = this.storage[tblName];
     return (key) => {
       return storage.hasOwnProperty(key) ? storage[key] : undefined;
     };
   }
 
-  write(tblName, { id, value }) {
-    const storage = this.storage[tblName];
-    storage[id] = value;
-    const data = {
+  write({ tblName, data }) {
+    const payload = {
       ...this.storage,
-      [tblName]: storage,
+      [tblName]: data,
     };
-    fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2));
+    fs.writeFileSync(this.filePath, JSON.stringify(payload, null, 2));
+  }
+
+  buildPayload(tblName, type, { id, value }) {
+    const storage = this.storage[tblName];
+    let payload;
+    switch (type) {
+      case "ADD":
+        const _id = generateUUID();
+        storage[_id] = {
+          ...value,
+          _id,
+        };
+        payload = storage;
+        break;
+
+      case "UPDATE":
+        const oldSnap = this.getById(tblName)(id);
+        const updatedValue = {
+          ...oldSnap,
+          ...value,
+        };
+        storage[id] = updatedValue;
+        payload = storage;
+        break;
+
+      case "REMOVE":
+        delete storage[id];
+        payload = storage;
+        break;
+
+      case "REMOVEALL":
+        payload = {};
+        break;
+
+      default:
+        break;
+    }
+    return payload;
+  }
+
+  add(tblName) {
+    return (value) => {
+      this.write({
+        tblName,
+        data: this.buildPayload(tblName, "ADD", { value }),
+      });
+    };
   }
 
   update(tblName) {
-    return (id, val) => {
-      const oldSnap = this.findById(tblName)(id);
-      const newSnap = {
-        ...oldSnap,
-        ...val,
-      };
-      this.write(tblName, { id: oldSnap._id, value: newSnap });
+    return (id, value) => {
+      this.write({
+        tblName,
+        data: this.buildPayload(tblName, "UPDATE", { id, value }),
+      });
     };
   }
 
-  save(tblName) {
-    const id = generateUUID();
-    return (value) => {
-      this.write(tblName, {
-        id,
-        value: {
-          ...value,
-          _id: id,
-        },
+  remove(tblName) {
+    return (id) => {
+      this.write({
+        tblName,
+        data: this.buildPayload(tblName, "REMOVE", { id }),
       });
     };
+  }
+  removeAll(tblName) {
+    return () => {};
   }
 }
 
@@ -62,17 +102,16 @@ class JSONdb extends operations {
     super(filePath);
   }
 
-  model(tblName) {
+  doc(tblName) {
     return {
-      find: this.find(tblName),
-      findById: this.findById(tblName),
-      save: this.save(tblName),
+      getAll: this.getAll(tblName),
+      getById: this.getById(tblName),
+      add: this.add(tblName),
       update: this.update(tblName),
+      remove: this.remove(tblName),
+      removeAll: this.removeAll(tblName),
     };
   }
 }
 
 module.exports = JSONdb;
-
-// const projects = db.modal('projects')
-// projects.save({})

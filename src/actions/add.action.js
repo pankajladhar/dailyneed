@@ -13,8 +13,8 @@ const add = async (filePath) => {
       path: getPathForCurrentDir(),
       lastModifiedAt: new Date().getTime()
     };
-    const Projects = db.model("projects");
-    Projects.save(input);
+    const Projects = db.doc("projects");
+    Projects.add(input);
   } catch (e) {
     console.error(e);
   }

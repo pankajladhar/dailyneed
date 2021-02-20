@@ -1,4 +1,5 @@
-const { spawn, execSync } = require("child_process");
+const { spawn } = require("child_process");
+const { log } = require("util");
 
 const COMMANDS = require("../constants/commands");
 const handleRequest = require("../handlers/handlers");
@@ -11,19 +12,11 @@ const go = async (filePath) => {
     const db = new JSONdb(filePath);
     const Projects = db.doc("projects");
     const { value } = await handleRequest(
-      COMMANDS.GO,
+      COMMANDS.REMOVE,
       getProjectNames(Projects.getAll())
     );
 
-    const { _id, path: projectPath } = Projects.getById(value);
-    Projects.update(_id, { lastModifiedAt: new Date().getTime() });
-
-    spawn(process.env.SHELL, {
-      cwd: projectPath,
-      stdio: "inherit",
-      env: { ...process.env },
-    });
-    execSync(`code ${projectPath}`);
+    Projects.remove(value);
   } catch (e) {
     console.log(e);
   }

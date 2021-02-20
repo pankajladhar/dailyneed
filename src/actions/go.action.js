@@ -9,18 +9,17 @@ const { getProjectNames } = require("./../helpers/helpers");
 const go = async (filePath) => {
   try {
     const db = new JSONdb(filePath);
-    const Projects = db.model("projects");
+    const Projects = db.doc("projects");
     const { value } = await handleRequest(
       COMMANDS.GO,
-      getProjectNames(Projects.find({}))
+      getProjectNames(Projects.getAll())
     );
 
-    const { _id, path: projectPath } = Projects.findById(value);
+    const { _id, path: projectPath } = Projects.getById(value);
     Projects.update(_id, { lastModifiedAt: new Date().getTime() });
 
     spawn(process.env.SHELL, {
       cwd: projectPath,
-      // This makes this process "take over" the terminal
       stdio: "inherit",
       env: { ...process.env },
     });
