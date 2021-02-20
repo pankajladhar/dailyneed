@@ -56,7 +56,7 @@ class operations {
         payload = storage;
         break;
 
-      case "REMOVEALL":
+      case "PURGE":
         payload = {};
         break;
 
@@ -92,8 +92,14 @@ class operations {
       });
     };
   }
+
   removeAll(tblName) {
-    return () => {};
+    return () => {
+      this.write({
+        tblName,
+        data: this.buildPayload(tblName, "PURGE", {}),
+      });
+    };
   }
 }
 

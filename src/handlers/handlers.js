@@ -30,6 +30,15 @@ const questions = (command, data) => {
         },
       ];
       break;
+    case "PURGE":
+      xyz = [
+        {
+          type: "confirm",
+          name: "value",
+          message: "Can you confirm?",
+          initial: true,
+        },
+      ];
     default:
       break;
   }
