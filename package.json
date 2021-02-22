@@ -1,10 +1,11 @@
 {
-  "name": "project-keeper",
+  "name": "dailyneed",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
-    "n": "src/index.js"
+    "n": "src/index.js",
+    "dailyneed": "src/index.js"
   },
   "scripts": {
     "test": "jest"
