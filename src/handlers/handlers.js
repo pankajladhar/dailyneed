@@ -1,8 +1,8 @@
 const prompts = require("prompts");
 const { getProjectNameFromPath } = require("../helpers/helpers");
-const { PROJECT_NAME_OPTION } = require("../translations/en");
+const { ADD_PROJECT_OPTION } = require("../translations/en");
 
-const { TITLE } = PROJECT_NAME_OPTION;
+const { TITLE } = ADD_PROJECT_OPTION;
 
 const questions = (command, data) => {
   let question = [];
