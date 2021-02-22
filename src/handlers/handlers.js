@@ -1,15 +1,18 @@
 const prompts = require("prompts");
 const { getProjectNameFromPath } = require("../helpers/helpers");
+const { PROJECT_NAME_OPTION } = require("../translations/en");
+
+const { TITLE } = PROJECT_NAME_OPTION;
 
 const questions = (command, data) => {
-  let xyz = [];
+  let question = [];
   switch (command) {
     case "ADD":
-      xyz = [
+      question = [
         {
           name: "name",
           type: "text",
-          message: "Project name:",
+          message: `${TITLE} :`,
           initial: getProjectNameFromPath(),
         },
       ];
@@ -17,7 +20,7 @@ const questions = (command, data) => {
     case "GO":
     case "OPEN":
     case "REMOVE":
-      xyz = [
+      question = [
         {
           type: "autocomplete",
           name: "value",
@@ -31,7 +34,7 @@ const questions = (command, data) => {
       ];
       break;
     case "PURGE":
-      xyz = [
+      question = [
         {
           type: "confirm",
           name: "value",
@@ -42,7 +45,7 @@ const questions = (command, data) => {
     default:
       break;
   }
-  return xyz;
+  return question;
 };
 
 const handleRequest = async (command, data) => {
