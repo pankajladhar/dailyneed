@@ -22,7 +22,11 @@ const getProjectNames = (input) => {
     }));
 };
 
+const getSuggestions = (input, choices) =>
+  choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
+
 module.exports = {
+  getSuggestions,
   getProjecPath,
   getProjectNameFromPath,
   getPathForCurrentDir,

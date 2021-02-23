@@ -4,6 +4,9 @@ const translations = {
   NAME: "Name",
   PATH: "Path",
   ADD_PROJECT_TITLE: "Project name",
+  REMOVE_PROJECT_TITLE: "Select project to remove",
+  GO_PROJECT_TITLE: "Select project to go to",
+  OPEN_PROJECT_TITLE: "Select project to open in editor",
   ADD_PROJECT_TITLE_WITH_URL: "Full project path",
   ADD_PROJECT_OPTION: {
     SUCCESS_MSG: "Project added sucessfully in list",

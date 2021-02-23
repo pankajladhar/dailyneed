@@ -1,8 +1,17 @@
 const prompts = require("prompts");
-const { getProjectNameFromPath, getProjecPath } = require("../helpers/helpers");
-const { addProjectQuestion, addProjectQuestionWithURL } = require("./questions");
-const getSuggestions = (input, choices) =>
-  choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
+const {
+  getProjectNameFromPath,
+  getProjecPath,
+  getSuggestions,
+} = require("../helpers/helpers");
+const {
+  goProjectQuestion,
+  openProjectQuestion,
+  removeProjectQuestion,
+  addProjectQuestion,
+  addProjectQuestionWithURL,
+} = require("./questions");
+
 
 const questions = (command, data) => {
   let question = [];
@@ -16,18 +25,23 @@ const questions = (command, data) => {
         initialName: getProjectNameFromPath(),
       });
       break;
-    case "GO":
-    case "OPEN":
     case "REMOVE":
-      question = [
-        {
-          type: "autocomplete",
-          name: "value",
-          suggest: getSuggestions,
-          message: "Select project to open :",
-          choices: data,
-        },
-      ];
+      question = removeProjectQuestion({
+        suggestions: getSuggestions(input, choices),
+        data,
+      });
+      break;
+    case "GO":
+      question = goProjectQuestion({
+        suggestions: getSuggestions(input, choices),
+        data,
+      });
+      break;
+    case "OPEN":
+      question = openProjectQuestion({
+        suggestions: getSuggestions(input, choices),
+        data,
+      });
       break;
     case "PURGE":
       question = [
