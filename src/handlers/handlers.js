@@ -1,9 +1,6 @@
 const prompts = require("prompts");
-const { getProjectNameFromPath } = require("../helpers/helpers");
-const { ADD_PROJECT_OPTION } = require("../translations/en");
-
-const { TITLE } = ADD_PROJECT_OPTION;
-
+const { getProjectNameFromPath, getProjecPath } = require("../helpers/helpers");
+const { addQuestion, addQuestionWithURL } = require("./questions");
 const getSuggestions = (input, choices) =>
   choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
 
@@ -11,14 +8,13 @@ const questions = (command, data) => {
   let question = [];
   switch (command) {
     case "ADD":
-      question = [
-        {
-          name: "name",
-          type: "text",
-          message: `${TITLE} :`,
-          initial: getProjectNameFromPath(),
-        },
-      ];
+      question = addQuestion({ initialName: getProjectNameFromPath() });
+      break;
+    case "ADD_WITH_URL":
+      question = addQuestionWithURL({
+        initialPath: getProjecPath(),
+        initialName: getProjectNameFromPath(),
+      });
       break;
     case "GO":
     case "OPEN":
@@ -48,7 +44,8 @@ const questions = (command, data) => {
   return question;
 };
 
-const handleRequest = async (command, data) => {
+const handleRequest = async ({ command, data }) => {
+  console.log(command);
   return prompts(questions(command, data));
 };
 

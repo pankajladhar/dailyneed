@@ -2,6 +2,10 @@ const getProjectNameFromPath = () => {
   return process.cwd().split("/").pop();
 };
 
+const getProjecPath = () => {
+  return process.cwd();
+};
+
 const getPathForCurrentDir = () => process.cwd();
 
 const generateUUID = () => {
@@ -19,6 +23,7 @@ const getProjectNames = (input) => {
 };
 
 module.exports = {
+  getProjecPath,
   getProjectNameFromPath,
   getPathForCurrentDir,
   generateUUID,

@@ -5,6 +5,7 @@ const translations = {
   PATH: "Path",
   ADD_PROJECT_OPTION: {
     TITLE: "Project name",
+    TITLE_WITH_URL: 'Full project path',
     SUCCESS_MSG: "Project added sucessfully in list",
     PROJECT_FOUND_MSG: "Project found in exiting list",
   },

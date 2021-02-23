@@ -7,10 +7,14 @@ const { success, info } = require("../logging");
 const { ADD_PROJECT_OPTION, NAME, PATH } = require("../translations/en");
 const { SUCCESS_MSG, PROJECT_FOUND_MSG } = ADD_PROJECT_OPTION;
 
-const add = async (filePath) => {
+const add = async (filePath, cmdObj = {}) => {
+  const { url } = cmdObj;
+
   try {
     const db = new JSONdb(filePath);
-    const { name } = await handleRequest(COMMANDS.ADD);
+    const { name } = await handleRequest({
+      command: url ? COMMANDS.ADD_WITH_URL : COMMANDS.ADD,
+    });
 
     const path = getPathForCurrentDir();
 

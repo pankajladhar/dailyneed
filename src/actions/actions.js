@@ -8,7 +8,7 @@ const purge = require("./purge.action");
 const filePath = path.join(__dirname, "..", "data.json");
 
 module.exports = {
-  add: () => add(filePath),
+  add: (cmdObj) => add(filePath, cmdObj),
   go: () => go(filePath),
   open: () => open(filePath),
   remove: () => remove(filePath),
