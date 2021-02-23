@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankajladhar/dailyneed.git"
+  },
   "bin": {
     "n": "src/index.js",
     "dailyneed": "src/index.js"
@@ -10,9 +14,17 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "project-manager",
+    "dailyneed",
+    "projects",
+    "open-projects",
+    "projectmanager",
+    "congifure-projects"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/pankajladhar/dailyneed#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^7.0.0",
