@@ -1,5 +1,6 @@
 module.exports = {
   collectCoverage: true,
+  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ["html", "text"],
   collectCoverageFrom: [
     "!/fixtures/**/*.js",
@@ -7,10 +8,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      statements: 5,
-      branches: 0.8,
-      functions: 19,
-      lines: 14,
+      statements: 6,
+      branches: 1,
+      functions: 23,
+      lines: 17,
     },
   },
 };
