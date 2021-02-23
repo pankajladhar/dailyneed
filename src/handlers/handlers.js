@@ -4,6 +4,9 @@ const { ADD_PROJECT_OPTION } = require("../translations/en");
 
 const { TITLE } = ADD_PROJECT_OPTION;
 
+const getSuggestions = (input, choices) =>
+  choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
+
 const questions = (command, data) => {
   let question = [];
   switch (command) {
@@ -24,10 +27,7 @@ const questions = (command, data) => {
         {
           type: "autocomplete",
           name: "value",
-          suggest: (input, choices) =>
-            choices.filter((i) =>
-              i.title.toLowerCase().includes(input.toLowerCase())
-            ),
+          suggest: getSuggestions,
           message: "Select project to open :",
           choices: data,
         },
