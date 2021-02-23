@@ -9,10 +9,18 @@ const main = {
 
 const success = (title, msg) => {
   console.log(
-    `\n${chalk.green.inverse(` ${title} `)} ${chalk.italic.dim(msg)}\n`
+    `\n${chalk.green.inverse(` ${title} `)} ${chalk.italic.green.dim(msg)}\n`
   );
 };
 
+const info = (title, msg) => {
+  console.log(
+    `\n${chalk.yellow.inverse(` ${title} `)} ${chalk.italic.yellow(msg)}\n`
+  );
+};
+
+
 module.exports = {
   success,
+  info
 };

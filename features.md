@@ -6,7 +6,7 @@ Allow user to add project using `command add`
 
 * [x] Current folder
 * [] With full path
-* [] Validate if project is already added
+* [x] Validate if project is already added
 
 ## Get into project
 

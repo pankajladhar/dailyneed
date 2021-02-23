@@ -20,6 +20,13 @@ class operations {
     };
   }
 
+  getByValue(tblName) {
+    const storage = this.storage[tblName];
+    return (key, value) => {
+      return Object.values(storage).filter((s) => s[key] === value)[0];
+    };
+  }
+
   write({ tblName, data }) {
     const payload = {
       ...this.storage,
@@ -112,6 +119,7 @@ class JSONdb extends operations {
     return {
       getAll: this.getAll(tblName),
       getById: this.getById(tblName),
+      getByValue: this.getByValue(tblName),
       add: this.add(tblName),
       update: this.update(tblName),
       remove: this.remove(tblName),
