@@ -1,14 +1,11 @@
-const { getProjectNameFromPath } = require("../helpers/helpers");
-const { ADD_PROJECT_OPTION } = require("../translations/en");
-
-const { TITLE, TITLE_WITH_URL } = ADD_PROJECT_OPTION;
+const { ADD_PROJECT_TITLE, ADD_PROJECT_TITLE_WITH_URL } = require("../translations/en");
 
 const addQuestion = ({ initialName }) => {
   return [
     {
       name: "name",
       type: "text",
-      message: `${TITLE} :`,
+      message: `${ADD_PROJECT_TITLE} :`,
       initial: initialName,
     },
   ];
@@ -19,13 +16,13 @@ const addQuestionWithURL = ({ initialPath, initialName }) => {
     {
       name: "url",
       type: "text",
-      message: `${TITLE_WITH_URL} :`,
+      message: `${ADD_PROJECT_TITLE_WITH_URL} :`,
       initial: initialPath,
     },
     {
       name: "name",
       type: "text",
-      message: `${TITLE} :`,
+      message: `${ADD_PROJECT_TITLE} :`,
       initial: initialName,
     },
   ];
