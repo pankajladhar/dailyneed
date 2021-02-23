@@ -66,6 +66,40 @@ describe("Operation on JSONdb", () => {
     ).toMatchObject(expected);
   });
 
+  it("getByValue method should return empty object no matching doc in DB", () => {
+    const expected = {};
+    expect(
+      projects.getByValue("path", "/Users/pankal/coding/dailyneed")
+    ).toMatchObject(expected);
+  });
+
+  it("add method should add new doc in DB", () => {
+    const data = {
+      name: "some",
+      path: "/Users/pankajl/coding/some",
+    };
+    projects.add(data);
+    const expected = {
+      name: "some",
+      path: "/Users/pankajl/coding/some",
+      _id: "1614102868250",
+      lastModifiedAt: "1614102868250",
+    };
+    const count = Object.keys(projects.getAll()).length;
+    expect(count).toBe(3)
+  });
+
+  it("update method should update lastModifiedAt in matching doc in DB", () => {
+    const expected = {
+      name: "dailyneed",
+      path: "/Users/pankajl/coding/dailyneed",
+      lastModifiedAt: 1613920701990,
+      _id: "1613920701988",
+    };
+    projects.update("1613920701988", { lastModifiedAt: 1613920701990 });
+    expect(projects.getById("1613920701988")).toMatchObject(expected);
+  });
+
   it("remove method should remove matching doc in DB", () => {
     projects.remove("1613920701988");
     const data =

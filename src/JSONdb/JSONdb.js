@@ -4,7 +4,7 @@ const { generateUUID } = require("./../helpers/helpers");
 class operations {
   constructor(filePath) {
     this.filePath = filePath;
-    const data = fs.readFileSync(filePath)
+    const data = fs.readFileSync(filePath);
     this.storage = JSON.parse(JSON.stringify(data));
   }
 
@@ -45,6 +45,7 @@ class operations {
         storage[_id] = {
           ...value,
           _id,
+          lastModifiedAt: _id,
         };
         payload = storage;
         break;
@@ -66,9 +67,6 @@ class operations {
 
       case "PURGE":
         payload = {};
-        break;
-
-      default:
         break;
     }
     return payload;
