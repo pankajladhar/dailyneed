@@ -4,14 +4,14 @@ module.exports = {
   coverageReporters: ["html", "text"],
   collectCoverageFrom: [
     "!/fixtures/**/*.js",
-    "**/*.js"
+    "src/**/*.js",
   ],
   coverageThreshold: {
     global: {
-      statements: 6,
-      branches: 1,
-      functions: 23,
-      lines: 17,
+      statements: 26,
+      branches: 23,
+      functions: 48,
+      lines: 26,
     },
   },
 };
