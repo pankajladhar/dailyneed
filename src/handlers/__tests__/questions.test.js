@@ -1,7 +1,7 @@
-const { addQuestion, addQuestionWithURL } = require("../questions");
+const { addProjectQuestion, addProjectQuestionWithURL } = require("../questions");
 
 describe("should construct proper question payload", () => {
-  it("for addQuestion method", () => {
+  it("for addProjectQuestion method", () => {
     const expected = [
       {
         name: "name",
@@ -11,11 +11,11 @@ describe("should construct proper question payload", () => {
       },
     ];
 
-    const result = addQuestion({ initialName: "initialName" });
+    const result = addProjectQuestion({ initialName: "initialName" });
     expect(result).toMatchObject(expected);
   });
 
-  it("for addQuestionWithURL method", () => {
+  it("for addProjectQuestionWithURL method", () => {
     const expected = [
       {
         name: "url",
@@ -31,7 +31,7 @@ describe("should construct proper question payload", () => {
       },
     ];
 
-    const result = addQuestionWithURL({
+    const result = addProjectQuestionWithURL({
       initialPath: "initialPath",
       initialName: "initialName",
     });

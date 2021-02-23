@@ -1,6 +1,6 @@
 const { ADD_PROJECT_TITLE, ADD_PROJECT_TITLE_WITH_URL } = require("../translations/en");
 
-const addQuestion = ({ initialName }) => {
+const addProjectQuestion = ({ initialName }) => {
   return [
     {
       name: "name",
@@ -11,7 +11,7 @@ const addQuestion = ({ initialName }) => {
   ];
 };
 
-const addQuestionWithURL = ({ initialPath, initialName }) => {
+const addProjectQuestionWithURL = ({ initialPath, initialName }) => {
   return [
     {
       name: "url",
@@ -29,6 +29,6 @@ const addQuestionWithURL = ({ initialPath, initialName }) => {
 };
 
 module.exports = {
-  addQuestion,
-  addQuestionWithURL,
+  addProjectQuestion,
+  addProjectQuestionWithURL,
 };

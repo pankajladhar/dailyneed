@@ -1,6 +1,6 @@
 const prompts = require("prompts");
 const { getProjectNameFromPath, getProjecPath } = require("../helpers/helpers");
-const { addQuestion, addQuestionWithURL } = require("./questions");
+const { addProjectQuestion, addProjectQuestionWithURL } = require("./questions");
 const getSuggestions = (input, choices) =>
   choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
 
@@ -8,10 +8,10 @@ const questions = (command, data) => {
   let question = [];
   switch (command) {
     case "ADD":
-      question = addQuestion({ initialName: getProjectNameFromPath() });
+      question = addProjectQuestion({ initialName: getProjectNameFromPath() });
       break;
     case "ADD_WITH_URL":
-      question = addQuestionWithURL({
+      question = addProjectQuestionWithURL({
         initialPath: getProjecPath(),
         initialName: getProjectNameFromPath(),
       });
