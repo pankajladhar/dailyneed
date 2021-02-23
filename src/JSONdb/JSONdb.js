@@ -23,7 +23,7 @@ class operations {
   getByValue(tblName) {
     const storage = this.storage[tblName];
     return (key, value) => {
-      return Object.values(storage).filter((s) => s[key] === value)[0];
+      return Object.values(storage).filter((s) => s[key] === value)[0] || {};
     };
   }
 

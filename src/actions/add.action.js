@@ -26,6 +26,7 @@ const add = async (filePath) => {
       "path",
       path
     );
+
     if (projectPath) {
       info("INFO", PROJECT_FOUND_MSG);
       console.log(`${NAME} : ${projectName}`);
