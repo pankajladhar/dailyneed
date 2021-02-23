@@ -19,8 +19,12 @@ const info = (title, msg) => {
   );
 };
 
+const log = (msg) => {
+  console.log(msg);
+};
 
 module.exports = {
   success,
-  info
+  info,
+  log
 };
