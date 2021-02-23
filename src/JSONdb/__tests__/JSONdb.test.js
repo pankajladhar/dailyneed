@@ -6,18 +6,20 @@ const { getDBSnapshot } = require("../fixtures/fixtures");
 
 jest.spyOn(fs, "readFileSync");
 
-const filePath = path.join(__dirname, "sample.data.json");
-
 describe("Operation on JSONdb", () => {
-  let db = new JSONdb(filePath);
-  let projects = db.doc("projects");
+  let db, projects;
+
+  beforeEach(() => {
+    fs.readFileSync.mockImplementation(getDBSnapshot);
+    db = new JSONdb("/some/fake/path");
+    projects = db.doc("projects");
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it("getAll method should return all docs in DB", () => {
-    fs.readFileSync.mockImplementation(getDBSnapshot);
     const expected = {
       1613920701987: {
         name: "coding",
@@ -37,7 +39,6 @@ describe("Operation on JSONdb", () => {
   });
 
   it("getById method should return matching doc in DB", () => {
-    fs.readFileSync.mockImplementation(getDBSnapshot);
     const expected = {
       name: "dailyneed",
       path: "/Users/pankajl/coding/dailyneed",
@@ -52,7 +53,6 @@ describe("Operation on JSONdb", () => {
   });
 
   it("getByValue method should return matching doc in DB", () => {
-    fs.readFileSync.mockImplementation(getDBSnapshot);
     const expected = {
       name: "dailyneed",
       path: "/Users/pankajl/coding/dailyneed",
