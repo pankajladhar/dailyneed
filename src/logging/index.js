@@ -19,6 +19,12 @@ const info = (title, msg) => {
   );
 };
 
+const warn = (title, msg) => {
+  console.warn(
+    `\n${chalk.blue.inverse(` ${title} `)} ${chalk.italic.blue(msg)}\n`
+  );
+};
+
 const log = (msg) => {
   console.log(msg);
 };
@@ -26,5 +32,6 @@ const log = (msg) => {
 module.exports = {
   success,
   info,
-  log
+  log,
+  warn
 };
