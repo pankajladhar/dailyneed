@@ -12,7 +12,8 @@
     "dailyneed": "src/index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "src/helpers/postinstall.js"
   },
   "keywords": [
     "project-manager",
