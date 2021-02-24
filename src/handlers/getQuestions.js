@@ -25,19 +25,19 @@ const getQuestions = (command, data) => {
       break;
     case "REMOVE":
       question = removeProjectQuestion({
-        suggestions: getSuggestions(input, choices),
+        suggestions: getSuggestions,
         data,
       });
       break;
     case "GO":
       question = goProjectQuestion({
-        suggestions: getSuggestions(input, choices),
+        suggestions: getSuggestions,
         data,
       });
       break;
     case "OPEN":
       question = openProjectQuestion({
-        suggestions: getSuggestions(input, choices),
+        suggestions: getSuggestions,
         data,
       });
       break;

@@ -1,5 +1,5 @@
 const {
-  ADD_PROJECT_TITLE,
+  ADD_PROJECT_NAME_TITLE,
   ADD_PROJECT_TITLE_WITH_URL,
   REMOVE_PROJECT_TITLE,
   GO_PROJECT_TITLE,
@@ -11,7 +11,7 @@ const addProjectQuestion = ({ initialName }) => {
     {
       name: "name",
       type: "text",
-      message: `${ADD_PROJECT_TITLE} :`,
+      message: `${ADD_PROJECT_NAME_TITLE} :`,
       initial: initialName,
     },
   ];
@@ -28,7 +28,7 @@ const addProjectQuestionWithURL = ({ initialPath, initialName }) => {
     {
       name: "name",
       type: "text",
-      message: `${ADD_PROJECT_TITLE} :`,
+      message: `${ADD_PROJECT_NAME_TITLE} :`,
       initial: initialName,
     },
   ];

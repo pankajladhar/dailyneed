@@ -1,8 +1,9 @@
-const { spawn } = require("child_process");
-const { log } = require("util");
-
 const COMMANDS = require("../constants/commands");
-const {handleRequest} = require("../handlers/handlers");
+const { handleRequest } = require("../handlers/handlers");
+const { success } = require("../logging");
+
+const { REMOVE_PROJECT_SUCCESS_MSG } = require("../translations/en");
+
 const JSONdb = require("../JSONdb/JSONdb");
 
 const { getProjectNames } = require("./../helpers/helpers");
@@ -10,13 +11,14 @@ const { getProjectNames } = require("./../helpers/helpers");
 const go = async (filePath) => {
   try {
     const db = new JSONdb(filePath);
-    const Projects = db.doc("projects");
-    const { value } = await handleRequest(
-      COMMANDS.REMOVE,
-      getProjectNames(Projects.getAll())
-    );
+    const instance = db.doc("projects");
+    const { value } = await handleRequest({
+      command: COMMANDS.REMOVE,
+      data: getProjectNames(instance.getAll()),
+    });
 
-    Projects.remove(value);
+    instance.remove(value);
+    success("REMOVE", REMOVE_PROJECT_SUCCESS_MSG);
   } catch (e) {
     console.log(e);
   }

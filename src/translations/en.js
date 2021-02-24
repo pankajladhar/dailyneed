@@ -3,7 +3,7 @@ const translations = {
   GO_COMMAND_DESCRIPTION: "option to go to project in list",
   NAME: "Name",
   PATH: "Path",
-  ADD_PROJECT_TITLE: "Project name",
+  ADD_PROJECT_NAME_TITLE: "Project name",
   REMOVE_PROJECT_TITLE: "Select project to remove",
   GO_PROJECT_TITLE: "Select project to go to",
   OPEN_PROJECT_TITLE: "Select project to open in editor",
@@ -14,8 +14,8 @@ const translations = {
   },
   REMOVE_PROJECT_OPTION: {
     TITLE: "Project name",
-    SUCCESS_MSG: "Project removed sucessfully in list",
   },
+  REMOVE_PROJECT_SUCCESS_MSG: "Project removed sucessfully in list",
 };
 
 module.exports = translations;
