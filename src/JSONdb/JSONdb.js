@@ -4,8 +4,7 @@ const { generateUUID } = require("./../helpers/helpers");
 class operations {
   constructor(filePath) {
     this.filePath = filePath;
-    const data = fs.readFileSync(filePath);
-    this.storage = JSON.parse(JSON.stringify(data));
+    this.storage = JSON.parse(fs.readFileSync(filePath));
   }
 
   getAll(tblName) {

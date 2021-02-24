@@ -1,3 +1,5 @@
+const { info } = require("../logging");
+
 const getProjectNameFromPath = () => {
   return process.cwd().split("/").pop();
 };
@@ -21,10 +23,16 @@ const getProjectNames = (input) => {
 const getSuggestions = (input, choices) =>
   choices.filter((i) => i.title.toLowerCase().includes(input.toLowerCase()));
 
+const onCancel = () => {
+  info("ABORT", "See ya ('__') /");
+  process.exit();
+};
+
 module.exports = {
   getSuggestions,
   getProjectNameFromPath,
   getPathForCurrentDir,
   generateUUID,
   getProjectNames,
+  onCancel,
 };

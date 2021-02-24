@@ -14,10 +14,11 @@ const projects = {
 };
 
 const getDBSnapshot = () => {
-  return {
+  const data = {
     projects,
     settings: {},
   };
+  return JSON.stringify(data, null, 2);
 };
 
 module.exports = {

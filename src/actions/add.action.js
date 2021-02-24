@@ -1,6 +1,6 @@
 const COMMANDS = require("../constants/commands");
 const { getPathForCurrentDir } = require("./../helpers/helpers");
-const {handleRequest} = require("../handlers/handlers");
+const { handleRequest } = require("../handlers/handlers");
 const JSONdb = require("../JSONdb/JSONdb");
 const { success, info, log } = require("../logging");
 
@@ -12,19 +12,19 @@ const add = async (filePath, cmdObj = {}) => {
 
   try {
     const db = new JSONdb(filePath);
+    const projects = db.doc("projects");
+
     const { name } = await handleRequest({
       command: url ? COMMANDS.ADD_WITH_URL : COMMANDS.ADD,
     });
 
-    const path = getPathForCurrentDir();
+    const path = url || getPathForCurrentDir();
 
     const input = {
       name,
       path,
       lastModifiedAt: new Date().getTime(),
     };
-
-    const projects = db.doc("projects");
 
     const { name: projectName, path: projectPath } = projects.getByValue(
       "path",

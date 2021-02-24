@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverage: false,
+  collectCoverage: true,
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ["html", "text"],
   collectCoverageFrom: [
@@ -8,10 +8,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      statements: 39,
-      branches: 40,
-      functions: 71,
-      lines: 38,
+      statements: 44,
+      branches: 50,
+      functions: 72,
+      lines: 43,
     },
   },
 };

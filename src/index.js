@@ -12,6 +12,7 @@ const {
 
 program
   .command("add")
+  .alias("save")
   .option("-u, --url", "Add a link to a repository to projects")
   .description(ADD_COMMAND_DESCRIPTION)
   .action(actions.add);
