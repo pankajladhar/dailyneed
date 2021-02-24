@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const JSONdb = require("./../JSONdb");
 const { getDBSnapshot } = require("../fixtures/fixtures");

@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 const { log } = require("util");
 
 const COMMANDS = require("../constants/commands");
-const handleRequest = require("../handlers/handlers");
+const {handleRequest} = require("../handlers/handlers");
 const JSONdb = require("../JSONdb/JSONdb");
 
 const { getProjectNames } = require("./../helpers/helpers");

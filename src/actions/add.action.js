@@ -1,6 +1,6 @@
 const COMMANDS = require("../constants/commands");
 const { getPathForCurrentDir } = require("./../helpers/helpers");
-const handleRequest = require("../handlers/handlers");
+const {handleRequest} = require("../handlers/handlers");
 const JSONdb = require("../JSONdb/JSONdb");
 const { success, info, log } = require("../logging");
 

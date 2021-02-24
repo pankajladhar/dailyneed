@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverage: true,
+  collectCoverage: false,
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ["html", "text"],
   collectCoverageFrom: [
