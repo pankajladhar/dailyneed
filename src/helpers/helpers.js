@@ -2,10 +2,6 @@ const getProjectNameFromPath = () => {
   return process.cwd().split("/").pop();
 };
 
-const getProjecPath = () => {
-  return process.cwd();
-};
-
 const getPathForCurrentDir = () => process.cwd();
 
 const generateUUID = () => {
@@ -27,7 +23,6 @@ const getSuggestions = (input, choices) =>
 
 module.exports = {
   getSuggestions,
-  getProjecPath,
   getProjectNameFromPath,
   getPathForCurrentDir,
   generateUUID,

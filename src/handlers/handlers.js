@@ -1,7 +1,6 @@
 const prompts = require("prompts");
 const {
   getProjectNameFromPath,
-  getProjecPath,
   getSuggestions,
 } = require("../helpers/helpers");
 const {
@@ -21,7 +20,7 @@ const questions = (command, data) => {
       break;
     case "ADD_WITH_URL":
       question = addProjectQuestionWithURL({
-        initialPath: getProjecPath(),
+        initialPath: getPathForCurrentDir(),
         initialName: getProjectNameFromPath(),
       });
       break;
