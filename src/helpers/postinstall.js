@@ -1,5 +1,5 @@
 const postinstall = () => {
-  console.log("Dailneed");
+  console.log("Dailneed !!");
 };
 
 postinstall();
