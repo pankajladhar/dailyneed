@@ -23,7 +23,7 @@ program
   .description(GO_COMMAND_DESCRIPTION)
   .action(actions.remove);
 
-// program.command("go").description(GO_COMMAND_DESCRIPTION).action(actions.go);
+program.command("go").description(GO_COMMAND_DESCRIPTION).action(actions.go);
 
 // program
 //   .command("open")
